@@ -36,7 +36,7 @@ module brick_with_prongs() {
       cube([width,depth,height/2]);
       cylinder(h=height/2, r=0.5);
   };
-  
+
   // Prongs
   prong_height=4;
   translate([width/2,3,height+prong_height/2]) {
@@ -59,20 +59,28 @@ module brick_with_prongs() {
 module tofu_usb_c() {
   difference() {
     brick_with_prongs();
-  
+
     // Cut out USB-C hole
     translate([width/2, depth/2, 0]) {
-      minkowski(){
-          cube([0.1,1.5,2], center=true);
-          cylinder(h=0.5, r=0.5);
+      hull(){
+          translate([0, 0.75, 0])
+            cylinder(h=1, r=0.5);
+          translate([0, -0.75, 0])
+            cylinder(h=1, r=0.5);
       };
     }
   }
-  
+
   // Add USB-C prong in the middle
-  translate([width/2, depth/2-0.5, 0.25])
-  minkowski(){
-      cube([0.1,1,2]);
-      cylinder(h=0.5, r=0.125);
+  translate([width/2, depth/2, 0.25])
+  //minkowski(){
+  //    cube([0.1,1,2]);
+  //    cylinder(h=0.5, r=0.125);
+  //};
+  hull(){
+      translate([0, 0.5, 0])
+        cylinder(h=0.75, r=0.125);
+      translate([0, -0.5, 0])
+        cylinder(h=0.75, r=0.125);
   };
 };
