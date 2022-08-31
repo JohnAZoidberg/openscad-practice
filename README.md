@@ -15,3 +15,6 @@ Made sure that the bottom pins can fit exactly between the top pins.
 
 #### A tiny shelf that came with a tiny wooden house set. Measured it and modeled it in OpenSCAD.
 ![](shelf.png)
+
+#### Framework Computer Screwdriver
+![](framework-screwdriver.png)
